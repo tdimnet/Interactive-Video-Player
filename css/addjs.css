@@ -1,0 +1,15 @@
+section aside {
+  position: relative;
+}
+
+.button {
+  width: 22px;
+  height: 26px;
+  /*position: absolute;*/
+  cursor: pointer;
+}
+
+.playButton {
+  /*left: 10px;
+  bottom: 10px;*/
+}

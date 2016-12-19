@@ -10,6 +10,7 @@
         <link rel="stylesheet  " href="css/normalize.css">
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400" rel="stylesheet">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/addjs.css">
     </head>
     <body>
       <div class="main-wrapper">
@@ -22,12 +23,15 @@
 
         <section>
           <!-- The video goes here  -->
-          <aside>
-            <video controls>
+          <aside id="video-container">
+            <video preload="auto" controls>
               <source src="video/video.mp4" type="video/mp4">
               <source src="video/video.ogg" type="video/ogg">
               <track kind="subtitles" label="English" srclang="en" src="captions.vtt">
             </video>
+            <div> <!-- Here are the video controls -->
+
+            </div>
           </aside>
 
           <!-- The text goes here -->
@@ -44,5 +48,6 @@
           </article>
         </section>
       </div>  <!-- END: main-wrapper -->
+      <script src="js/app.js"></script>
     </body>
 </html>
