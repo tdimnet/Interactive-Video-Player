@@ -1,0 +1,40 @@
+
+/*
+  GENERAL SETTINGS
+*/
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Source Sans Pro', sans-serif;
+  background: #EDEFF0;
+}
+
+.main-wrapper {
+  /*border: 1px solid #E4E6E7;*/
+  max-width: 1024px;
+  margin: 0 auto;
+  padding: 0px 40px;
+}
+
+
+/*
+  FONT ALIGNEMENT SETTINGS
+*/
+h1 {
+  text-align: center;
+  font-weight: lighter;
+}
+
+article p {
+  text-align: justify;
+}
+
+
+
+/*
+  COLOR SETTINGS
+*/
