@@ -11,9 +11,10 @@
 var videoContainer = document.getElementById('video-container');
 var videoElement = videoContainer.querySelector('video');
 var videoControlsContainer = videoContainer.querySelector('div');
+var progressBar = document.createElement("input");
 var playButton = document.createElement("img");
 var pauseButton = document.createElement("img");
-var progressBar = document.createElement("input");
+var timerElement = document.createElement("span");
 var volumeOffIcon = document.createElement("img");
 var volumeOnIcon = document.createElement("img");
 var fullscreenIcon = document.createElement("img");
@@ -29,24 +30,28 @@ videoElement.removeAttribute('controls');
     //Think to add the progressBar attributes here
 playButton.setAttribute('class', 'button playButton');
 pauseButton.setAttribute('class', 'button pauseButton');
+timerElement.setAttribute('class', 'button timerElement');
 volumeOffIcon.setAttribute('class', 'button volumeOffIcon');
 volumeOnIcon.setAttribute('class', 'button volumeOnIcon');
 fullscreenIcon.setAttribute('class', 'button fullscreenIcon');
+
   //Set the image for each icon
 playButton.setAttribute('src', 'icons/play-icon.png');
 pauseButton.setAttribute('src', 'icons/pause-icon.png');
+timerElement.innerText = '00:00 - 01:00';
 volumeOffIcon.setAttribute('src', 'icons/volume-off-icon.png');
 volumeOnIcon.setAttribute('src', 'icons/volume-on-icon.png');
 fullscreenIcon.setAttribute('src', 'icons/fullscreen-icon.png');
 
 
 
-
 // Adding the elements to the page
     //videoControlsContainer.append(progressBar); => add it once it's ok!
 videoControlsContainer.append(playButton);
+videoControlsContainer.append(timerElement);
 videoControlsContainer.append(volumeOnIcon);
 videoControlsContainer.append(fullscreenIcon);
+
 
 
 
@@ -91,6 +96,36 @@ var unmuteTheVideo = function() {
   videoControlsContainer.append(volumeOnIcon);
 }
 
+var toggleFullscreenMode = function() {
+  console.log("The fullscreen button has been clicked!");
+  //According to the browser used, allow the user to go on fullscreen mode
+  if (videoElement.requestFullscreen) {
+    videoElement.requestFullscreen();
+  } else if (videoElement.mozRequestFullScreen) {
+    //For Mozilla
+    videoElement.mozRequestFullScreen();
+    //For Chrome
+  } else if (videoElement.webkitRequestFullscreen) {
+    videoElement.webkitRequestFullscreen();
+  }
+}
+
+
+
+//Creating the event listeners
+  //When the video is playing
+videoElement.addEventListener('timeupdate', function() {
+  //Set the duration variable
+  var videoDuration = "01:00";
+  //Round the result
+  var currentTimer = Math.ceil(videoElement.currentTime);
+  if (currentTimer < 10) {
+    timerElement.innerText = "00:0" + currentTimer + " - " + videoDuration;
+  } else {
+    timerElement.innerText = "00:" + currentTimer + " - " + videoDuration;
+  }
+});
+
 
 
 //When the play button is clicked
@@ -105,28 +140,5 @@ volumeOnIcon.onclick = muteTheVideo;
 //When the volume OFF button is clicked
 volumeOffIcon.onclick = unmuteTheVideo;
 
-
-
-
-
-
-//  The project
-
-// When the mouse is outside the video element
-  // A following bar should be present
-
-// When the mouse is inside the video element
-  // These elements should be present:
-    //A play button
-    //A pause button
-    //A progress bar
-    //A fullscreen button
-    //A volume control button
-
-// When the video is played
-  // The following bar should move
-  // The text should be highlighted
-
-// When the video is stopped
-  // The following bar should stop moving
-  // The text should stop moving
+//When the fullscreen button is clicked
+fullscreenIcon.onclick = toggleFullscreenMode;

@@ -14,6 +14,12 @@ section aside {
   transform: translateY(-40px);
 }
 
+#video-container:hover .timerElement {
+  opacity: 1;
+  color: white;
+  transform: translateY(-36px);
+}
+
 video {
   cursor: pointer;
 }
@@ -35,6 +41,13 @@ video {
 .playButton,
 .pauseButton {
   left: 10px;
+  opacity: 0;
+}
+
+.timerElement {
+  width: auto;
+  height: auto;
+  left: 50px;
   opacity: 0;
 }
 
