@@ -2,14 +2,49 @@ section aside {
   position: relative;
 }
 
-.button {
-  width: 22px;
-  height: 26px;
-  /*position: absolute;*/
+/*
+  Video
+*/
+#video-container:hover .playButton,
+#video-container:hover .pauseButton,
+#video-container:hover .fullscreenIcon,
+#video-container:hover .volumeOnIcon,
+#video-container:hover .volumeOffIcon {
+  opacity: 1;
+  transform: translateY(-40px);
+}
+
+video {
   cursor: pointer;
 }
 
-.playButton {
-  /*left: 10px;
-  bottom: 10px;*/
+
+
+
+/*
+  Buttons
+*/
+.button {
+  width: 22px;
+  height: 26px;
+  position: absolute;
+  cursor: pointer;
+  transition: .5s;
+}
+
+.playButton,
+.pauseButton {
+  left: 10px;
+  opacity: 0;
+}
+
+.volumeOnIcon,
+.volumeOffIcon {
+  right: 50px;
+  opacity: 0;
+}
+
+.fullscreenIcon {
+  right: 10px;
+  opacity: 0;
 }
