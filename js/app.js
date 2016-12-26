@@ -11,7 +11,7 @@
 var videoContainer = document.getElementById('video-container');
 var videoElement = videoContainer.querySelector('video');
 var videoControlsContainer = videoContainer.querySelector('div');
-var progressBar = document.createElement("input");
+var progressBar = document.getElementById("progress-bar");
 var playButton = document.createElement("img");
 var pauseButton = document.createElement("img");
 var timerElement = document.createElement("span");
@@ -27,7 +27,6 @@ videoElement.removeAttribute('controls');
 
 // Adding classes and styles to the elements
   //Set the class for each icon
-    //Think to add the progressBar attributes here
 playButton.setAttribute('class', 'button playButton');
 pauseButton.setAttribute('class', 'button pauseButton');
 timerElement.setAttribute('class', 'button timerElement');
@@ -46,7 +45,9 @@ fullscreenIcon.setAttribute('src', 'icons/fullscreen-icon.png');
 
 
 // Adding the elements to the page
-    //videoControlsContainer.append(progressBar); => add it once it's ok!
+progressBar.style.display = "initial";
+
+
 videoControlsContainer.append(playButton);
 videoControlsContainer.append(timerElement);
 videoControlsContainer.append(volumeOnIcon);
@@ -113,7 +114,7 @@ var toggleFullscreenMode = function() {
 
 
 //Creating the event listeners
-  //When the video is playing
+  //Controls the current duration of the video
 videoElement.addEventListener('timeupdate', function() {
   //Set the duration variable
   var videoDuration = "01:00";
@@ -124,6 +125,22 @@ videoElement.addEventListener('timeupdate', function() {
   } else {
     timerElement.innerText = "00:" + currentTimer + " - " + videoDuration;
   }
+});
+
+  //Controls the progression of the range input
+videoElement.addEventListener('timeupdate', function() {
+  var percentage = Math.floor((100 / videoElement.duration) *
+   videoElement.currentTime);
+   progressBar.value = percentage;
+   progressBar.innerHTML = percentage + '% played';
+  // //Set the duration variable
+  // var videoDuration = videoElement.seekable.end(0);
+  // //Set the current timer
+  // var currentTimer = Math.ceil(videoElement.currentTime);
+  // //Create a % variable
+  // var rangeTimer = (currentTimer / videoDuration)*100;
+  // //Update the range of the progress input
+  // progressBar.value = rangeTimer;
 });
 
 
