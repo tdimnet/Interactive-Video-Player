@@ -20,6 +20,33 @@ var volumeOnIcon = document.createElement("img");
 var fullscreenIcon = document.createElement("img");
 
 
+//Creating the constructor function for the captions time
+function captionsTimeObj(startTime, endTime) {
+  this.startTime = startTime;
+  this.endTime = endTime;
+}
+
+//Creating the captions time object
+var allCaptionsTime = [
+  new captionsTimeObj(0.240, 4.130),
+  new captionsTimeObj(4.130, 7.535),
+  new captionsTimeObj(7.535, 11.270),
+  new captionsTimeObj(11.270, 13.960),
+  new captionsTimeObj(13.960, 17.940),
+  new captionsTimeObj(17.940, 22.370),
+  new captionsTimeObj(22.370, 26.880),
+  new captionsTimeObj(26.880, 30.920),
+  new captionsTimeObj(32.100, 34.730),
+  new captionsTimeObj(34.730, 39.430),
+  new captionsTimeObj(39.430, 41.190),
+  new captionsTimeObj(42.350, 46.300),
+  new captionsTimeObj(46.300, 49.270),
+  new captionsTimeObj(49.270, 53.760),
+  new captionsTimeObj(53.760, 57.780),
+  new captionsTimeObj(57.780, 60.000)
+];
+
+
 // Removing the elements to the page
   //Remove the default controls of the html video element
 videoElement.removeAttribute('controls');
@@ -116,9 +143,23 @@ var goToThisPosition = function(clickValue) {
   videoElement.currentTime = clickValue / 100 * videoElement.duration;
 }
 
+var highlightingTheTextCaptions = function () {
+  for (var i = 0; i < allCaptionsTime.length; i++) {
+    if (videoElement.currentTime > allCaptionsTime[i].startTime && videoElement.currentTime <= allCaptionsTime[i].endTime) {
+      document.getElementsByClassName("captionsText")[i].style.color = "orange";
+    } else {
+      document.getElementsByClassName("captionsText")[i].style.color = "black";
+    }
+  }
+}
+
 
 
 //Creating the event listeners
+
+  //Controls the highlighting of the subtitles
+videoElement.addEventListener("timeupdate", highlightingTheTextCaptions);
+
   //Controls the current duration of the video
 videoElement.addEventListener('timeupdate', function() {
   //Set the duration variable
