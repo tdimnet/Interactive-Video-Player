@@ -111,6 +111,11 @@ var toggleFullscreenMode = function() {
   }
 }
 
+//Here clickValue is defined with a event listener
+var goToThisPosition = function(clickValue) {
+  videoElement.currentTime = clickValue / 100 * videoElement.duration;
+}
+
 
 
 //Creating the event listeners
@@ -129,18 +134,16 @@ videoElement.addEventListener('timeupdate', function() {
 
   //Controls the progression of the range input
 videoElement.addEventListener('timeupdate', function() {
-  var percentage = Math.floor((100 / videoElement.duration) *
-   videoElement.currentTime);
-   progressBar.value = percentage;
-   progressBar.innerHTML = percentage + '% played';
-  // //Set the duration variable
-  // var videoDuration = videoElement.seekable.end(0);
-  // //Set the current timer
-  // var currentTimer = Math.ceil(videoElement.currentTime);
-  // //Create a % variable
-  // var rangeTimer = (currentTimer / videoDuration)*100;
-  // //Update the range of the progress input
-  // progressBar.value = rangeTimer;
+  var percentage = Math.floor((100 / videoElement.duration) * videoElement.currentTime);
+  progressBar.value = percentage;
+  progressBar.innerHTML = percentage + '% played';
+});
+
+  //Controls the position of the video according to the progress bar
+progressBar.addEventListener('click', function(event) {
+  //Targets the position of the click on the x-axis
+  var clickValue = Math.round(event.offsetX / this.offsetWidth * 100);
+  goToThisPosition(clickValue);
 });
 
 
