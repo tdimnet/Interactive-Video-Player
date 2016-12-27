@@ -75,10 +75,10 @@ fullscreenIcon.setAttribute('src', 'icons/fullscreen-icon.png');
 progressBar.style.display = "initial";
 
 
-videoControlsContainer.append(playButton);
-videoControlsContainer.append(timerElement);
-videoControlsContainer.append(volumeOnIcon);
-videoControlsContainer.append(fullscreenIcon);
+videoControlsContainer.appendChild(playButton);
+videoControlsContainer.appendChild(timerElement);
+videoControlsContainer.appendChild(volumeOnIcon);
+videoControlsContainer.appendChild(fullscreenIcon);
 
 
 
@@ -91,7 +91,7 @@ var playTheVideo = function() {
   //Remove the play button
   videoControlsContainer.removeChild(playButton);
   //Add the pause button
-  videoControlsContainer.append(pauseButton);
+  videoControlsContainer.appendChild(pauseButton);
 }
 
 var stopTheVideo = function() {
@@ -101,7 +101,7 @@ var stopTheVideo = function() {
   //Remove the pause button
   videoControlsContainer.removeChild(pauseButton);
   //Add the play button
-  videoControlsContainer.append(playButton);
+  videoControlsContainer.appendChild(playButton);
 }
 
 var muteTheVideo = function() {
@@ -111,7 +111,7 @@ var muteTheVideo = function() {
   //Remove the volume ON button
   videoControlsContainer.removeChild(volumeOnIcon);
   //Add the volume OFF button
-  videoControlsContainer.append(volumeOffIcon);
+  videoControlsContainer.appendChild(volumeOffIcon);
 }
 
 var unmuteTheVideo = function() {
@@ -121,7 +121,7 @@ var unmuteTheVideo = function() {
   //Remove the volume OFF button
   videoControlsContainer.removeChild(volumeOffIcon);
   //Add the volume ON button
-  videoControlsContainer.append(volumeOnIcon);
+  videoControlsContainer.appendChild(volumeOnIcon);
 }
 
 var toggleFullscreenMode = function() {

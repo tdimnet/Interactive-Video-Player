@@ -1,7 +1,7 @@
 
-/*
+/******************************
   GENERAL SETTINGS
-*/
+******************************/
 *, *:before, *:after {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -20,9 +20,10 @@ body {
 }
 
 
-/*
+
+/******************************
   FONT ALIGNEMENT SETTINGS
-*/
+******************************/
 h1 {
   text-align: center;
   font-weight: lighter;
@@ -34,4 +35,100 @@ aside video {
 
 article p {
   text-align: justify;
+}
+
+
+
+/******************************
+  VIDEO CONTAINER
+******************************/
+section aside {
+  position: relative;
+}
+
+/*
+  Video
+*/
+#video-container:hover #progress-bar {
+  -webkit-transform: translateY(-36px);
+          transform: translateY(-36px);
+}
+
+#video-container:hover .playButton,
+#video-container:hover .pauseButton,
+#video-container:hover .fullscreenIcon,
+#video-container:hover .volumeOnIcon,
+#video-container:hover .volumeOffIcon {
+  opacity: 1;
+  -webkit-transform: translateY(-40px);
+          transform: translateY(-40px);
+}
+
+#video-container:hover .timerElement {
+  opacity: 1;
+  color: white;
+  -webkit-transform: translateY(-36px);
+          transform: translateY(-36px);
+}
+
+/*
+  Progress Bar
+*/
+#progress-bar {
+  display: none;
+  position: absolute;
+  -webkit-transition: .5s;
+  transition: .5s;
+  bottom: 10px;
+  left: 23px;
+  width: 95%;
+  height: 7px;
+  cursor: pointer;
+  border: none;
+  background-color: rgba(255, 255, 255, .2);
+}
+
+#progress-bar::-webkit-progress-bar {
+  background-color: rgba(255, 255, 255, .2);
+}
+
+#progress-bar::-webkit-progress-value {
+  background-color: orange;
+}
+
+
+/*
+  Buttons
+*/
+.button {
+  width: 22px;
+  height: 26px;
+  position: absolute;
+  cursor: pointer;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+.playButton,
+.pauseButton {
+  left: 10px;
+  opacity: 0;
+}
+
+.timerElement {
+  width: auto;
+  height: auto;
+  left: 50px;
+  opacity: 0;
+}
+
+.volumeOnIcon,
+.volumeOffIcon {
+  right: 50px;
+  opacity: 0;
+}
+
+.fullscreenIcon {
+  right: 10px;
+  opacity: 0;
 }
