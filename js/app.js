@@ -92,7 +92,7 @@ var playTheVideo = function() {
   videoControlsContainer.removeChild(playButton);
   //Add the pause button
   videoControlsContainer.appendChild(pauseButton);
-}
+};
 
 var stopTheVideo = function() {
   console.log("And the video is now stop!");
@@ -102,7 +102,7 @@ var stopTheVideo = function() {
   videoControlsContainer.removeChild(pauseButton);
   //Add the play button
   videoControlsContainer.appendChild(playButton);
-}
+};
 
 var muteTheVideo = function() {
   console.log("And the sound of the video is now gone!");
@@ -112,7 +112,7 @@ var muteTheVideo = function() {
   videoControlsContainer.removeChild(volumeOnIcon);
   //Add the volume OFF button
   videoControlsContainer.appendChild(volumeOffIcon);
-}
+};
 
 var unmuteTheVideo = function() {
   console.log("And the sound of the video is now back!");
@@ -122,7 +122,7 @@ var unmuteTheVideo = function() {
   videoControlsContainer.removeChild(volumeOffIcon);
   //Add the volume ON button
   videoControlsContainer.appendChild(volumeOnIcon);
-}
+};
 
 var toggleFullscreenMode = function() {
   console.log("The fullscreen button has been clicked!");
@@ -136,12 +136,12 @@ var toggleFullscreenMode = function() {
   } else if (videoElement.webkitRequestFullscreen) {
     videoElement.webkitRequestFullscreen();
   }
-}
+};
 
 //Here clickValue is defined with a event listener
 var goToThisPosition = function(clickValue) {
   videoElement.currentTime = clickValue / 100 * videoElement.duration;
-}
+};
 
 var highlightingTheTextCaptions = function () {
   for (var i = 0; i < allCaptionsTime.length; i++) {
@@ -151,7 +151,7 @@ var highlightingTheTextCaptions = function () {
       document.getElementsByClassName("captionsText")[i].style.color = "black";
     }
   }
-}
+};
 
 
 
